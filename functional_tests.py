@@ -12,8 +12,8 @@ import time
 browser = webdriver.Firefox()
 browser.get('http://localhost:8000')
 
-assert ('Main Page'in browser.title, True)
+assert 'Hello World'in browser.title, True
 browser.implicitly_wait(3)
-time.sleep(5)
+#time.sleep(5)
 browser.quit()
 

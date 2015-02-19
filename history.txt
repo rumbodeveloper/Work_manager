@@ -11,3 +11,17 @@ CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
+
+
+*--> Modificar url.py para que llegue al menos a la pagina home
+
+*--> Crear en views la pagina de la home
+
+*--> Crear el directorio templates en el raiz de la aplicacion (no en la raiz del proyecto)
+
+*--> Modificar settings de nuevo para que busque templates en el directorio que hemos creado
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, '../TaskManager/templates')
+    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Always use forward slashes, even on Windows.
+    # Don't forget to use absolute paths, not relative paths.
+)
