@@ -1,0 +1,13 @@
+*--> En settings agregar al principio para que los path sean relativos al siton donde se desarrolla el proyecto.
+
+import os # agregado por mi para que este al inicio del fichero
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
+
+
+*--> De momento desconecto en settings el requerimiento de Csfr. ojo, comentarlo de nuevo al pasarlo a produccion
+MIDDLEWARE_
+CLASSES = (
+    'django.middleware.common.CommonMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
