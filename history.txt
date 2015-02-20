@@ -25,3 +25,13 @@ TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, '../TaskManager/templates')
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+*--> DRY links & Templates
+
+*--> agregar ficheros estaticos
+cambios en settings.py
+STATIC_URL = '/static/'
+
+# Additional locations of static files
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, '../TaskManager/static/')
