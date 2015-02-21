@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block title_html %}
-    Shitty Hello World tittle
+    Home Page Django Projects
 {% endblock %}
 
 {% block h1 %}
-    {{ bloc.supper }} Hello Shitttty World Django
+    Shitty Django projects
 {% endblock %}
 
 {% block article_content %}
-    Hello world again
+    <p>More shitty django projects </p>
+     <a href={% url 'project_list' %}>All projects list</a>
 {% endblock %}
 

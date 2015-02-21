@@ -13,11 +13,15 @@ class UserProfile(models.Model):
     email = models.EmailField(verbose_name = 'Email')
     years_seniority = models.IntegerField(verbose_name = 'Seniority',default = 0)
     date_created = models.DateField(verbose_name = 'Date of Birthday',auto_now_add=True)
+    def __str__(self):
+        return self.name
 
 class Project(models.Model):
     title = models.CharField(max_length=50, verbose_name='Title')
     description = models.CharField(max_length=1000, verbose_name='Description')
     client_name = models.CharField(max_length=1000, verbose_name='Client Name')
+    def __str__(self):
+        return self.title
 
 
 
@@ -35,4 +39,17 @@ class Task(models.Model):
     time_elapsed = models.IntegerField(verbose_name = 'Elapsed time', null=True, default=None, blank=True)
     importance = models.IntegerField(verbose_name = 'Importance')
     project = models.ForeignKey(Project, verbose_name = 'Project', null=True, default=None, blank=True)
-    developer = models.ForeignKey(Developer, verbose_name = 'User')
+    developer1 = models.ForeignKey(Developer, verbose_name = 'User', related_name='dev1')
+    developer2 = models.ForeignKey(Developer, verbose_name='User', related_name='dev2')
+    #relacion uno a muchos a agregar a la clase Task
+    developers = models.ManyToManyField(Developer,through="DeveloperWorkTask")
+    def __str__(self):
+        return self.title
+
+
+
+class DeveloperWorkTask(models.Model):
+    developer=models.ForeignKey(Developer)
+    task=models.ForeignKey(Task)
+    time_elapsed_dev=models.IntegerField(verbose_name="Time elapsed", null=True, default=None, blank=True)
+
