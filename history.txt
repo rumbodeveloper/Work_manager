@@ -79,4 +79,6 @@ luego se ejecuta
 manage.py schemamigration TaskManager --auto
 manage.py migrate TaskManager
 
+*--> agregar un modulo de administration admin.py, una vez establecido el modulo de administracion para que funcione.
+
 
