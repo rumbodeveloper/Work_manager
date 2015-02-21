@@ -78,3 +78,5 @@ manage.py syncdb -- migrate (ojo, esta ultima linea solo se ejecuta una vez
 luego se ejecuta
 manage.py schemamigration TaskManager --auto
 manage.py migrate TaskManager
+
+
