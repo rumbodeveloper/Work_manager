@@ -1,1 +1,2 @@
-TODO
+TODO importar el modelo utilizando como base el proyecto VH
+TODO importar un CSS para cerciorarme de que funciona.
