@@ -38,7 +38,7 @@ TIME_ZONE = 'America/Chicago'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us'#'es'
 
 SITE_ID = 1
 
@@ -108,6 +108,13 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
+    #esta variable global la agrego siguiendo las instrucciones de instalacion de la app cookie law
+
+)
+
 ROOT_URLCONF = 'Work_manager.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
@@ -132,6 +139,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'TaskManager',
     'south',
+    'cookielaw',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
