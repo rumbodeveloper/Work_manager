@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title_html %}
+    Detalle del proyecto: {{ project.title }}
+{% endblock %}
+
+{% block h1 %}
+    Another shitty django project
+{% endblock %}
+
+{% block article_content %}
+    <br/>
+    <p>More shitty django projects </p>
+    <p>This project is: {{ project.title }}</p>
+    <p>And consists in: {{ project.description }}</p>
+    <p>Ordered by: {{ project.client_name }}</p>
+    <br/>
+    <a href={% url 'project_list' %}>All projects list</a>
+    <a href={% url 'public_index' %}>Home</a>
+    <br/>
+{% endblock %}
+

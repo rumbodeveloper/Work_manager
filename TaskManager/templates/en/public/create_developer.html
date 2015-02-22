@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title_html %}
+    Crear un nuevo Developer
+{% endblock %}
+
+{% block h1 %}
+    Create Developer
+{% endblock %}
+
+{% block article_content %}
+    <form method="post" action="{% url "create_developer" %}">
+    <table>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+            <td>Login</td>
+            <td><input type="text" name="login" /> </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="text" name="password" /></td>
+        </tr>
+        <tr>
+            <td>Supervisor</td>
+            <td>
+                <select name="supervisor">
+                    {% for supervisor in supervisors_list %}
+                    <option value="{{ supervisor.id }}">{{ supervisor.name }}
+                    {% endfor %}
+                    </option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>
+                <input type="submit" value="Valid" />
+            </td>
+        </tr>
+
+    </table>
+    </form>
+    <br/>
+    <p>More shitty django projects </p>
+    <p>This project is: {{ project.title }}</p>
+    <p>And consists in: {{ project.description }}</p>
+    <p>Ordered by: {{ project.client_name }}</p>
+    <br/>
+    <a href={% url 'project_list' %}>All projects list</a>
+    <br />
+    <a href={% url 'public_index' %}>Home</a>
+    <br/>
+{% endblock %}
+

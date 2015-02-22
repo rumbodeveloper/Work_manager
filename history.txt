@@ -89,3 +89,8 @@ class UserProfile(models.Model):
     #aqui van los nombes de los campos
     def __str__(self):
         return self.name #si hemos elegido name como variable que define el campo
+
+*--> agregar CRUD codigo en views para las paginas que sea necesario usando query-set
+
+*--> crear formularios
+

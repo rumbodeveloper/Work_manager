@@ -17,5 +17,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^connection$','TaskManager.views.connection',name='public_connection'),
-    url(r'^projectlist$','TaskManager.views.project_list',name='project_list')
+    url(r'^projectlist$','TaskManager.views.project_list',name='project_list'),
+    url(r'^project-detail-(?P<pk>\d+)$','TaskManager.views.project_detail', name='project_detail'),
+    url(r'^create-developer$','TaskManager.views.create_developer', name='create_developer'),
 )
