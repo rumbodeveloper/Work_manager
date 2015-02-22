@@ -9,8 +9,10 @@
 
 {% block article_content %}
     <form method="post" action="{% url "create_developer" %}">
-    {% csrf_token %}
-    <table>
+        {% csrf_token %}
+        <!--
+   pure html style
+   <table>
         <tr>
             <td>Name</td>
             <td><input type="text" name="name" /></td>
@@ -45,7 +47,15 @@
     </table>
     </form>
     <br/>
-    <p>More shitty django projects </p>
+
+
+//-->
+
+        <table>
+           {{ form.as_table }}
+        </table>
+        <p><input type="submit" value="Crear"/></p>
+    </form>
     <p>This project is: {{ project.title }}</p>
     <p>And consists in: {{ project.description }}</p>
     <p>Ordered by: {{ project.client_name }}</p>
@@ -54,5 +64,8 @@
     <br />
     <a href={% url 'public_index' %}>Home</a>
     <br/>
+
+
+
 {% endblock %}
 

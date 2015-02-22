@@ -4,14 +4,46 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from TaskManager.models import  Developer, Supervisor
+from django import forms
+
+#esta seria la funcion real, utilizando la facilidad de formas de django
+
+class Form_inscription(forms.Form):
+    name = forms.CharField(label='Name',max_length=30)
+    login = forms.CharField(label='Login',max_length=30)
+    password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    supervisor = forms.ModelChoiceField(label='Supervisor', queryset=Supervisor.objects.all())
+
+
+def page(request):
+    if request.POST:
+        form = Form_inscription(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            login = form.cleaned_data['login']
+            password = form.cleaned_data['password']
+            supervisor = form.cleaned_data['supervisor']
+            new_developer = Developer(name= name, login=login,
+                                      password=password,email='', supervisor=supervisor)
+            new_developer.save()
+            return HttpResponse('Desarrollador agregado')
+        else:
+            return render(request, 'en/public/create_developer.html', {'form':form})
+    else:
+        form=Form_inscription()
+        return render(request, 'en/public/create_developer.html', {'form':form})
 
 
 
+
+
+
+#funcion inicial, solo muestra un combo
 '''def page(request):
     supervisors_list = Supervisor.objects.all()
     return render(request, 'en/public/create_developer.html',{'supervisors_list': supervisors_list})'''
-
-def page(request):
+#esta seria la funcion tradicional usando codigo html
+'''def page(request):
     error = False
     
     if request.POST:
@@ -44,4 +76,4 @@ def page(request):
             return HttpResponse('Ha habido algun error')
     else:
         supervisors_list = Supervisor.objects.all()
-        return render(request, 'en/public/create_developer.html',{'supervisors_list': supervisors_list})
+        return render(request, 'en/public/create_developer.html',{'supervisors_list': supervisors_list})'''
