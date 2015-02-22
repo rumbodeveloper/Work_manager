@@ -9,6 +9,7 @@
 
 {% block article_content %}
     <form method="post" action="{% url "create_developer" %}">
+    {% csrf_token %}
     <table>
         <tr>
             <td>Name</td>
