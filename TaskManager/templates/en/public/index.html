@@ -9,7 +9,9 @@
 
 {% block article_content %}
     <p>More shitty django projects </p>
-     <a href={% url 'project_list' %}>All projects list</a><br />
-    <a href={% url 'create_developer' %}>Crear un nuevo desarrollador</a>
+    <br />
+    <a href={% url 'project_list' %}>All projects list</a><br />
+    <a href={% url 'create_developer' %}>Crear un nuevo desarrollador</a><br />
+    <a href={% url 'create_supervisor' %}>Crear un nuevo supervisor</a><br />
 {% endblock %}
 

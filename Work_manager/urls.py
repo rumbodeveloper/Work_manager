@@ -20,4 +20,5 @@ urlpatterns = patterns('',
     url(r'^projectlist$','TaskManager.views.projectlist.page',name='project_list'),
     url(r'^project-detail-(?P<pk>\d+)$','TaskManager.views.projectdetail.page', name='project_detail'),
     url(r'^create-developer$','TaskManager.views.createdeveloper.page', name='create_developer'),
+    url(r'^create_supervisor$', 'TaskManager.views.createsupervisor.page', name='create_supervisor'),
 )
