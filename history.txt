@@ -17,6 +17,8 @@ CLASSES = (
 
 *--> Crear en views la pagina de la home
 
+*--> Organizate las views y los models como un package agregando __ini__.py
+
 *--> Crear el directorio templates en el raiz de la aplicacion (no en la raiz del proyecto)
 
 *--> Modificar settings de nuevo para que busque templates en el directorio que hemos creado
@@ -92,5 +94,12 @@ class UserProfile(models.Model):
 
 *--> agregar CRUD codigo en views para las paginas que sea necesario usando query-set
 
-*--> crear formularios
+*--> crear formularios utilizando las facilidades de django
+
+
+*--> url donde explica como incluir un plugin para la ley de cookies
+http://blog.apsl.net/weblog/2014/02/13/ley-de-cookies-con-django/
+la forma mas simple de poner el texto en espanol es creando en los templates de
+la app un folder que se llame cookie law del que cuelgue banner.html
+
 
