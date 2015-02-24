@@ -5,6 +5,8 @@ from django.http import HttpResponse
 
 from TaskManager.models import  Developer, Supervisor
 from django import forms
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
 #esta seria la funcion real, utilizando la facilidad de formas de django
 
@@ -12,7 +14,21 @@ class Form_inscription(forms.Form):
     name = forms.CharField(label='Name',max_length=30)
     login = forms.CharField(label='Login',max_length=30)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    #vamos a agregar otro campo para la password, si las dos password coinciden todo esta ok
+    #si no, la validacion generara un mensaje de error
+    password_bis = forms.CharField(label='Password', widget=forms.PasswordInput)
     supervisor = forms.ModelChoiceField(label='Supervisor', queryset=Supervisor.objects.all())
+
+    def clean(self):
+        #esta linea nos permite extender el metodo clean que es responsable de validar los campos de datos.
+        cleaned_data = super(Form_inscription, self).clean()
+        #este method es muy util porque lleva a camo el metodo clean() de la superclase
+        #Sin esta linea, estariamos rescribiendo el metodo en luar de extendiendolo
+        password = self.cleaned_data.get('password')
+        password_bis = self.cleaned_data.get('password_bis')
+        if password and password_bis and password != password_bis:
+            raise forms.ValidationError("Las passwords no son identicas")
+        return self.cleaned_data
 
 
 def page(request):
@@ -26,7 +42,7 @@ def page(request):
             new_developer = Developer(name= name, login=login,
                                       password=password,email='', supervisor=supervisor)
             new_developer.save()
-            return HttpResponse('Desarrollador agregado')
+            return HttpResponseRedirect(reverse('public_index'))
         else:
             return render(request, 'en/public/create_developer.html', {'form':form})
     else:
