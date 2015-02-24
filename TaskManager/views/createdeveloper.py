@@ -8,10 +8,22 @@ from django import forms
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
+
 #esta seria la funcion real, utilizando la facilidad de formas de django
 
+
+
+
+
 class Form_inscription(forms.Form):
-    name = forms.CharField(label='Name',max_length=30)
+    error_name = {
+    'required': 'Tienes que escribir un nombre!',
+    'invalid': 'Formato erroneo'
+    }
+
+
+
+    name = forms.CharField(label='Name',max_length=30,error_messages=error_name )
     login = forms.CharField(label='Login',max_length=30)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
     #vamos a agregar otro campo para la password, si las dos password coinciden todo esta ok
