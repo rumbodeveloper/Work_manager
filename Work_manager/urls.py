@@ -5,6 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from django.views.generic import CreateView
+from django.views.generic.list import ListView
 from TaskManager.models import Project, Task
 
 urlpatterns = patterns('',
@@ -20,13 +21,18 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 
     url(r'^connection$','TaskManager.views.connection.page',name='public_connection'),
-    url(r'^projectlist$','TaskManager.views.projectlist.page',name='project_list'),
+    #url(r'^projectlist$','TaskManager.views.projectlist.page',name='project_list'),
     url(r'^project-detail-(?P<pk>\d+)$','TaskManager.views.projectdetail.page', name='project_detail'),
     url(r'^create-developer$','TaskManager.views.createdeveloper.page', name='create_developer'),
     url(r'^create_supervisor$', 'TaskManager.views.createsupervisor.page', name='create_supervisor'),
     #url(r'^create_project$','TaskManager.views.createproject.page',name='create_project')
-    url(r'create-project$', CreateView.as_view(model=Project, template_name='en/public/create_project.html',
+
+    #CBV --> vistas creadas automaticamente en CBV
+    url(r'^create-project$', CreateView.as_view(model=Project, template_name='en/public/create_project.html',
                                                success_url='index'), name = 'create_project'),
-    url(r'create-task$', CreateView.as_view(model=Task, template_name='en/public/create_task.html',
-                                               success_url='index'), name = 'create_task')
+    url(r'^create-task$', CreateView.as_view(model=Task, template_name='en/public/create_task.html',
+                                               success_url='index'), name = 'create_task'),
+    url(r'^project_list$', ListView.as_view(model=Project, template_name='en/public/projectlist.html'),
+        name='project_list'),
+
 )

@@ -8,6 +8,8 @@
 {% endblock %}
 
 {% block article_content %}
+    <!-- trozo de codigo anulado para insertar un cbv
+
     <h3>{{ action }}</h3>
     {% if all_projects|length > 0 %}
         <table>
@@ -29,6 +31,25 @@
     {% else %}
         <span>No project</span>
     {% endif %}
+    -->
+
+    <table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Client Name</th>
+    </tr>
+    {% for project in object_list %}
+    <tr>
+        <td>{{ project.title }}</td>
+        <td>{{ project.description }}</td>
+        <td>{{ project.client_name }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+
+
     <a href={% url 'public_index' %}>Home page</a>
 {% endblock %}
 
