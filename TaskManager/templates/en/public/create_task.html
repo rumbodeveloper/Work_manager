@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title_html %}
+    Crear un nuevo Proyecto
+{% endblock %}
+
+{% block h1 %}
+    Create Project
+{% endblock %}
+
+{% block article_content %}
+    <form method="post" action="{% url "create_task" %}">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <p><input type="submit" value="Create"></p>
+    </form>
+    <br/>
+    <br/>
+    <a href={% url 'project_list' %}>All projects list</a>
+    <br />
+    <a href={% url 'public_index' %}>Home</a>
+    <br/>
+{% endblock %}
+

@@ -5,7 +5,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 from django.views.generic import CreateView
-from TaskManager.models import Project
+from TaskManager.models import Project, Task
 
 urlpatterns = patterns('',
     # Examples:
@@ -26,5 +26,7 @@ urlpatterns = patterns('',
     url(r'^create_supervisor$', 'TaskManager.views.createsupervisor.page', name='create_supervisor'),
     #url(r'^create_project$','TaskManager.views.createproject.page',name='create_project')
     url(r'create-project$', CreateView.as_view(model=Project, template_name='en/public/create_project.html',
-                                               success_url='index'), name = 'create_project')
+                                               success_url='index'), name = 'create_project'),
+    url(r'create-task$', CreateView.as_view(model=Task, template_name='en/public/create_task.html',
+                                               success_url='index'), name = 'create_task')
 )

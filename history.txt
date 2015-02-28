@@ -103,3 +103,4 @@ la forma mas simple de poner el texto en espanol es creando en los templates de
 la app un folder que se llame cookie law del que cuelgue banner.html
 
 
+*--> Estoy cambiando algunas views que ya tenia hechas para incorporar la tecnologia CBV
