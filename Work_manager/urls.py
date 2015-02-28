@@ -8,6 +8,9 @@ from django.views.generic import CreateView
 from django.views.generic.list import ListView
 from TaskManager.models import Project, Task
 
+#extendiendo List View
+from TaskManager.views.cbv.ListView import Project_list
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Work_manager.views.home', name='home'),
@@ -32,7 +35,8 @@ urlpatterns = patterns('',
                                                success_url='index'), name = 'create_project'),
     url(r'^create-task$', CreateView.as_view(model=Task, template_name='en/public/create_task.html',
                                                success_url='index'), name = 'create_task'),
-    url(r'^project_list$', ListView.as_view(model=Project, template_name='en/public/projectlist.html'),
+    #url(r'^project_list$', ListView.as_view(model=Project, template_name='en/public/project_list.html'),
+        #name='project_list'), # entre comillas para explorar un resultado de sobreescribir CBV'''
+    url(r'^project_list$', Project_list.as_view(model=Project, template_name='en/public/project_list.html'),
         name='project_list'),
-
 )
