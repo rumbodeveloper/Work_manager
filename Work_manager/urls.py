@@ -4,6 +4,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
+from django.views.generic import CreateView
+from TaskManager.models import Project
+
 urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'Work_manager.views.home', name='home'),
@@ -21,5 +24,7 @@ urlpatterns = patterns('',
     url(r'^project-detail-(?P<pk>\d+)$','TaskManager.views.projectdetail.page', name='project_detail'),
     url(r'^create-developer$','TaskManager.views.createdeveloper.page', name='create_developer'),
     url(r'^create_supervisor$', 'TaskManager.views.createsupervisor.page', name='create_supervisor'),
-    url(r'^create_project$','TaskManager.views.createproject.page',name='create_project')
+    #url(r'^create_project$','TaskManager.views.createproject.page',name='create_project')
+    url(r'create-project$', CreateView.as_view(model=Project, template_name='en/public/create_project.html',
+                                               success_url='index'), name = 'create_project')
 )
