@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title_html %}
+    Developer List
+{% endblock %}
+
+{% block h1 %}
+    Developer List:
+{% endblock %}
+
+{% block article_content %}
+    <table>
+    <tr>
+        <td>Name</td>
+        <td>Login</td>
+        <td>Supevisor</td>
+    </tr>
+    {% for dev in object_list %}
+    <tr>
+        <td><a href="">{{ dev.name }}</a> </td>
+        <td>{{ dev.login }}</td>
+        <td>{{ dev.supervisor }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+{% endblock %}
+

@@ -6,7 +6,7 @@ admin.autodiscover()
 
 from django.views.generic import CreateView
 from django.views.generic.list import ListView
-from TaskManager.models import Project, Task
+from TaskManager.models import Project, Task, Developer
 
 #extendiendo List View
 from TaskManager.views.cbv.ListView import Project_list
@@ -39,4 +39,6 @@ urlpatterns = patterns('',
         #name='project_list'), # entre comillas para explorar un resultado de sobreescribir CBV'''
     url(r'^project_list$', Project_list.as_view(model=Project, template_name='en/public/project_list.html'),
         name='project_list'),
+    url(r'^developer_list$', ListView.as_view(model=Developer, template_name='en/public/developer_list.html'),
+        name='developer_list'),
 )
