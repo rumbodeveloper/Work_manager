@@ -6,6 +6,7 @@ admin.autodiscover()
 
 from django.views.generic import CreateView
 from django.views.generic.list import ListView
+from django.views.generic import DetailView
 from TaskManager.models import Project, Task, Developer
 
 #extendiendo List View
@@ -41,4 +42,6 @@ urlpatterns = patterns('',
         name='project_list'),
     url(r'^developer_list$', ListView.as_view(model=Developer, template_name='en/public/developer_list.html'),
         name='developer_list'),
+    url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
+        name='task_detail'),
 )
