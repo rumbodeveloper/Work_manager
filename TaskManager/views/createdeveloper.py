@@ -26,7 +26,7 @@ class Form_inscription(forms.Form):
     name = forms.CharField(label='Name',max_length=30,error_messages=error_name )
     login = forms.CharField(label='Login',max_length=30)
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    #vamos a agregar otro campo para la password, si las dos password coinciden todo esta ok
+    #vamos a agregar otro campo para la password, si las dos password coinciden to do esta ok
     #si no, la validacion generara un mensaje de error
     password_bis = forms.CharField(label='Password', widget=forms.PasswordInput)
     supervisor = forms.ModelChoiceField(label='Supervisor', queryset=Supervisor.objects.all())

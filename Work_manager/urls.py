@@ -11,6 +11,7 @@ from TaskManager.models import Project, Task, Developer
 
 #extendiendo List View
 from TaskManager.views.cbv.ListView import Project_list
+from TaskManager.views.cbv.DetailView import Developer_detail
 
 urlpatterns = patterns('',
     # Examples:
@@ -44,4 +45,5 @@ urlpatterns = patterns('',
         name='developer_list'),
     url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
         name='task_detail'),
+    url(r'^developer_detail(?P<pk>\d+)$', Developer_detail.as_view(),name='developer_detail'),
 )

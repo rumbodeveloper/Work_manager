@@ -52,6 +52,7 @@ class Task(models.Model):
     developers = models.ManyToManyField(Developer,through="DeveloperWorkTask")
     def __str__(self):
         return self.title
+    #TODO Cannot set values on a ManyToManyField which specifies an intermediary model.
 
 
 

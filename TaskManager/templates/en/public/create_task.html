@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
 {% block title_html %}
-    Crear un nuevo Proyecto
+    Crear una nueva Tarea
 {% endblock %}
 
 {% block h1 %}
-    Create Project
+    Crear una nueva tarea
 {% endblock %}
 
 {% block article_content %}
+
     <form method="post" action="{% url "create_task" %}">
         {% csrf_token %}
         <table>
