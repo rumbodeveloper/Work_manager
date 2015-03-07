@@ -8,6 +8,7 @@ from django.views.generic import CreateView
 from django.views.generic.list import ListView
 from django.views.generic import DetailView
 from TaskManager.models import Project, Task, Developer
+from django.views.generic import UpdateView
 
 #extendiendo List View
 from TaskManager.views.cbv.ListView import Project_list
@@ -46,4 +47,8 @@ urlpatterns = patterns('',
     url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
         name='task_detail'),
     url(r'^developer_detail(?P<pk>\d+)$', Developer_detail.as_view(),name='developer_detail'),
+    url(r'^update_task(?P<pk>\d+)$', UpdateView.as_view(model=Task, template_name="en/public/update_task.html",
+                                                        queryset=Task.objects.filter(id='1')),
+        #TODO No se como pasar el parametro pk para que la vista lo tenga en cuenta.
+        name='update_task'),
 )
