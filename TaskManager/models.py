@@ -46,17 +46,19 @@ class Task(models.Model):
     time_elapsed = models.IntegerField(verbose_name = 'Elapsed time', null=True, default=None, blank=True)
     importance = models.IntegerField(verbose_name = 'Importance')
     project = models.ForeignKey(Project, verbose_name = 'Project', null=True, default=None, blank=True)
-    developer1 = models.ForeignKey(Developer, verbose_name = 'User', related_name='dev1')
-    developer2 = models.ForeignKey(Developer, verbose_name='User', related_name='dev2')
+    developer1 = models.ForeignKey(Developer, verbose_name = 'Dev1', related_name='dev1')
+    developer2 = models.ForeignKey(Developer, verbose_name='Dev2', related_name='dev2')
     #relacion uno a muchos a agregar a la clase Task
     developers = models.ManyToManyField(Developer,through="DeveloperWorkTask")
     def __str__(self):
         return self.title
-    #TODO Cannot set values on a ManyToManyField which specifies an intermediary model.
 
 
 
 class DeveloperWorkTask(models.Model):
+    class Meta:
+        auto_created=True #agregado este meta parece resolver el error, pero no sirve si hago una migracion
+
     developer=models.ForeignKey(Developer)
     task=models.ForeignKey(Task)
     time_elapsed_dev=models.IntegerField(verbose_name="Time elapsed", null=True, default=None, blank=True)
