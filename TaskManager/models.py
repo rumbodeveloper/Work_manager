@@ -23,22 +23,33 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.name
 
+
 class Project(models.Model):
     title = models.CharField(max_length=50, verbose_name='Title')
     description = models.CharField(max_length=1000, verbose_name='Description')
     client_name = models.CharField(max_length=1000, verbose_name='Client Name')
     def __str__(self):
         return self.title
+    class Meta:
+        verbose_name='project'
+        verbose_name_plural='project'
 
 
 
 class Supervisor(UserProfile):
     #hereda los campos del modelo UserProfile
     specialisation = models.CharField(max_length=50, verbose_name="Specialisation")
+    class Meta:
+        verbose_name='supervisor'
+        verbose_name_plural='supervisors'
 
 class Developer(UserProfile):
     #tambien hereda los campos de UserProfile
     supervisor = models.ForeignKey(Supervisor,verbose_name="Supervisor")
+    class Meta:
+        verbose_name='developer'
+        verbose_name_plural='developers'
+
 
 class Task(models.Model):
     title = models.CharField(max_length=50, verbose_name = 'Title')
@@ -52,14 +63,15 @@ class Task(models.Model):
     developers = models.ManyToManyField(Developer,through="DeveloperWorkTask")
     def __str__(self):
         return self.title
+    class Meta:
+        verbose_name='task'
+        verbose_name_plural='tasks'
 
 
 
 class DeveloperWorkTask(models.Model):
-    class Meta:
-        auto_created=True #agregado este meta parece resolver el error, pero no sirve si hago una migracion
-
     developer=models.ForeignKey(Developer)
     task=models.ForeignKey(Task)
     time_elapsed_dev=models.IntegerField(verbose_name="Time elapsed", null=True, default=None, blank=True)
-
+    class Meta:
+        auto_created=True #agregado este meta parece resolver el error, pero no sirve si hago una migracion

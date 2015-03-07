@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title_html %}
+    Update a {{ model_name }}
+{% endblock %}
+
+{% block h1 %}
+    Update a {{ model_name }}
+{% endblock %}
+
+{% block article_content %}
+    <form method="post" action="{% url url_name object.id %}">
+        <!--line 2 -->
+        <!-- En esta linea, usamos nuestra propiedad url_name para redirigir la forma a la pagina actual. -->
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <p><input type="submit" value="Acualiza"></p>
+
+    </form>
+{% endblock %}
+
+

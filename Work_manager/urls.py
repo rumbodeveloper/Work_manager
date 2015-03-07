@@ -15,6 +15,7 @@ from TaskManager.views.cbv.ListView import Project_list
 from TaskManager.views.cbv.DetailView import Developer_detail
 from TaskManager.views.cbv.UpdateView import Task_update_time
 from TaskManager.views.cbv.DeleteView import Task_delete
+from TaskManager.views.cbv.UpdateViewCustom import UpdateViewCustom
 
 
 
@@ -52,11 +53,14 @@ urlpatterns = patterns('',
         name='task_detail'),
     url(r'^developer_detail(?P<pk>\d+)$', Developer_detail.as_view(),name='developer_detail'),
     #ojo, en la siguiente linea success_url es directamente la url, no el name de la url
-    url(r'^update_task(?P<pk>\d+)$', UpdateView.as_view(model=Task, template_name="en/public/update_task.html",
-                                                        success_url='index'),
-                                                        name='update_task'),
+    #url(r'^update_task(?P<pk>\d+)$', UpdateView.as_view(model=Task, template_name="en/public/update_task.html",
+                                                        #success_url='index'),
+                                                        #name='update_task'),
         #TODO No se como pasar el parametro pk para que la vista lo tenga en cuenta.
     url(r'^update_task_time(?P<pk>\d+)$', Task_update_time.as_view(),
         name='update_task_time'),
-    url(r'^task_delete_(?P<pk>\d+)$',Task_delete.as_view(),name='task_delete')
+    url(r'^task_delete_(?P<pk>\d+)$',Task_delete.as_view(),name='task_delete'),
+    url(r'^update_task_(?P<pk>\d+)$', UpdateViewCustom.as_view(model=Task,url_name='update_task',
+                                                              success_url='public_index'),
+                                                            name='update_task'),
 )
