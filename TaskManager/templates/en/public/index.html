@@ -21,9 +21,11 @@
     <a href={% url 'create_task' %}>Create Task</a><br />
     <a href={% url 'task_detail' '1' %}>Detail First View</a><br />
     <a href={% url 'developer_detail' '4' %}>Developer Detail</a><br />
-    <a href={% url 'update_task' '2' %}>Update  Task Number 2</a><br />
+    <a href={% url 'update_task' '1' %}>Update  Task Number 1</a><br />
     <br />
-    <a href={% url 'update_task_time' '2' %}>Update Task Number 2 time</a><br />
+    <a href={% url 'update_task_time' '1' %}>Update Task Number 1 time</a><br />
+    <br />
+    <a href={% url 'task_delete' '1' %}>Delete Task Number 1</a><br />
 
 {% endblock %}
 

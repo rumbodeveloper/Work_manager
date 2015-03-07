@@ -14,6 +14,7 @@ from django.views.generic import UpdateView
 from TaskManager.views.cbv.ListView import Project_list
 from TaskManager.views.cbv.DetailView import Developer_detail
 from TaskManager.views.cbv.UpdateView import Task_update_time
+from TaskManager.views.cbv.DeleteView import Task_delete
 
 
 
@@ -57,4 +58,5 @@ urlpatterns = patterns('',
         #TODO No se como pasar el parametro pk para que la vista lo tenga en cuenta.
     url(r'^update_task_time(?P<pk>\d+)$', Task_update_time.as_view(),
         name='update_task_time'),
+    url(r'^task_delete_(?P<pk>\d+)$',Task_delete.as_view(),name='task_delete')
 )
