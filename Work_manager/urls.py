@@ -13,6 +13,9 @@ from django.views.generic import UpdateView
 #extendiendo List View
 from TaskManager.views.cbv.ListView import Project_list
 from TaskManager.views.cbv.DetailView import Developer_detail
+from TaskManager.views.cbv.UpdateView import Task_update_time
+
+
 
 urlpatterns = patterns('',
     # Examples:
@@ -47,8 +50,11 @@ urlpatterns = patterns('',
     url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
         name='task_detail'),
     url(r'^developer_detail(?P<pk>\d+)$', Developer_detail.as_view(),name='developer_detail'),
+    #ojo, en la siguiente linea success_url es directamente la url, no el name de la url
     url(r'^update_task(?P<pk>\d+)$', UpdateView.as_view(model=Task, template_name="en/public/update_task.html",
-                                                        queryset=Task.objects.filter(id='1')),
+                                                        success_url='index'),
+                                                        name='update_task'),
         #TODO No se como pasar el parametro pk para que la vista lo tenga en cuenta.
-        name='update_task'),
+    url(r'^update_task_time(?P<pk>\d+)$', Task_update_time.as_view(),
+        name='update_task_time'),
 )
