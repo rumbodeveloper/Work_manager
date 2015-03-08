@@ -49,8 +49,8 @@ urlpatterns = patterns('',
         name='project_list'),
     url(r'^developer_list$', ListView.as_view(model=Developer, template_name='en/public/developer_list.html'),
         name='developer_list'),
-    url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
-        name='task_detail'),
+    #url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
+        #name='task_detail'), --> esta la url antigua, sustitudia por la del capitulo 9: using sesions.
     url(r'^developer_detail(?P<pk>\d+)$', Developer_detail.as_view(),name='developer_detail'),
     #ojo, en la siguiente linea success_url es directamente la url, no el name de la url
     #url(r'^update_task(?P<pk>\d+)$', UpdateView.as_view(model=Task, template_name="en/public/update_task.html",
@@ -63,4 +63,6 @@ urlpatterns = patterns('',
     url(r'^update_task_(?P<pk>\d+)$', UpdateViewCustom.as_view(model=Task,url_name='update_task',
                                                               success_url='public_index'),
                                                             name='update_task'),
+    url(r'^task_detail_(?P<pk>\d+)$','TaskManager.views.task_detail.page',name='task_detail'),
+    url(r'^task_list$', 'TaskManager.views.task_list.page', name='task_list'),
 )
