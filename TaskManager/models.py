@@ -4,21 +4,17 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-
-
-
-
-
-
 class UserProfile(models.Model):
     user_auth = models.OneToOneField(User,primary_key=True)
     phone = models.CharField(max_length=20, verbose_name = 'Phone', null = True, default = None, blank = True)
     born_date = models.DateField(verbose_name = 'Born date',null = True, default = None, blank = True)
-    last_connexion = models.DateTimeField(verbose_name = 'Date of last connexion',
-                                           null = True, default = None, blank = True)
+    last_connexion = models.DateTimeField(verbose_name = 'Date of last connexion', null = True, default = None, blank = True)
     years_seniority = models.IntegerField(verbose_name = 'Seniority',default = 0)
     def __str__(self):
-        return self.user_auth
+        return self.user_auth.username
+
+
+
 
 
 class Project(models.Model):
@@ -36,16 +32,12 @@ class Project(models.Model):
 class Supervisor(UserProfile):
     #hereda los campos del modelo UserProfile
     specialisation = models.CharField(max_length=50, verbose_name="Specialisation")
-    class Meta:
-        verbose_name='supervisor'
-        verbose_name_plural='supervisors'
+
 
 class Developer(UserProfile):
     #tambien hereda los campos de UserProfile
     supervisor = models.ForeignKey(Supervisor,verbose_name="Supervisor")
-    class Meta:
-        verbose_name='developer'
-        verbose_name_plural='developers'
+
 
 
 class Task(models.Model):
