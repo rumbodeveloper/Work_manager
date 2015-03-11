@@ -16,8 +16,8 @@
     </tr>
     {% for dev in object_list %}
     <tr>
-        <td><a href="">{{ dev.name }}</a> </td>
-        <td>{{ dev.login }}</td>
+        <td><a href="">{{ dev}}</a> </td>
+        <td>{{ dev.user_auth.last_name }}</td>
         <td>{{ dev.supervisor }}</td>
     </tr>
     {% endfor %}

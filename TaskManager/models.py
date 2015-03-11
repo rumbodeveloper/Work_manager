@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -10,18 +11,14 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-    name = models.CharField(max_length=50, verbose_name = 'Name')
-    login = models.CharField(max_length=25, verbose_name = 'Login')
-    password = models.CharField(max_length=100, verbose_name = 'Password')
+    user_auth = models.OneToOneField(User,primary_key=True)
     phone = models.CharField(max_length=20, verbose_name = 'Phone', null = True, default = None, blank = True)
     born_date = models.DateField(verbose_name = 'Born date',null = True, default = None, blank = True)
-    last_connection = models.DateTimeField(verbose_name = 'Date of last connection',
+    last_connexion = models.DateTimeField(verbose_name = 'Date of last connexion',
                                            null = True, default = None, blank = True)
-    email = models.EmailField(verbose_name = 'Email')
     years_seniority = models.IntegerField(verbose_name = 'Seniority',default = 0)
-    date_created = models.DateField(verbose_name = 'Date of Birthday',auto_now_add=True)
     def __str__(self):
-        return self.name
+        return self.user_auth
 
 
 class Project(models.Model):
@@ -57,21 +54,10 @@ class Task(models.Model):
     time_elapsed = models.IntegerField(verbose_name = 'Elapsed time', null=True, default=None, blank=True)
     importance = models.IntegerField(verbose_name = 'Importance')
     project = models.ForeignKey(Project, verbose_name = 'Project', null=True, default=None, blank=True)
-    developer1 = models.ForeignKey(Developer, verbose_name = 'Dev1', related_name='dev1')
-    developer2 = models.ForeignKey(Developer, verbose_name='Dev2', related_name='dev2')
-    #relacion uno a muchos a agregar a la clase Task
-    developers = models.ManyToManyField(Developer,through="DeveloperWorkTask")
+    developer = models.ForeignKey(Developer, verbose_name = 'Developer', related_name='developer')
     def __str__(self):
         return self.title
     class Meta:
         verbose_name='task'
         verbose_name_plural='tasks'
 
-
-
-class DeveloperWorkTask(models.Model):
-    developer=models.ForeignKey(Developer)
-    task=models.ForeignKey(Task)
-    time_elapsed_dev=models.IntegerField(verbose_name="Time elapsed", null=True, default=None, blank=True)
-    class Meta:
-        auto_created=True #agregado este meta parece resolver el error, pero no sirve si hago una migracion

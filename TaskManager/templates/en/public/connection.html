@@ -1,16 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Page Connection</title>
-</head>
-<body>
-    <h1>Pues esta es la pagina a la que llegamos</h1>
-    <article>
-        Aqui es donde vamos a poner todavia mas rollo
-        <br />
-        <a href={% url 'public_index' %}>Home Page</a>
-    </article>
+{% extends "base.html" %}
+{% block article_content %}
+    {% if user.is_authenticated %}
+        <h1>Estas connectado</h1>
+        <p>
+            Tu correo es: {{ user.email }}
 
-</body>
-</html>
+        </p>
+    {% else %}
+        <h1>Conexion</h1>
+        <form method="POST" action="{{ public_connection }}"
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+
+        </table>
+        <input type="submit" class="button"  value="Conexion" />
+        </form>
+    {% endif %}
+    <br />
+    <a href={% url 'public_index' %}>Home</a>
+    <br/>
+{% endblock %}

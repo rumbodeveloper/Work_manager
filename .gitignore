@@ -61,3 +61,5 @@ __init__.py
 *.js
 *.png
 *.db
+
+Packt_example_code/

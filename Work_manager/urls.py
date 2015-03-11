@@ -65,4 +65,5 @@ urlpatterns = patterns('',
                                                             name='update_task'),
     url(r'^task_detail_(?P<pk>\d+)$','TaskManager.views.task_detail.page',name='task_detail'),
     url(r'^task_list$', 'TaskManager.views.task_list.page', name='task_list'),
+    url(r'^connections$','TaskManager.views.connection.page',name="public_connection"),
 )
