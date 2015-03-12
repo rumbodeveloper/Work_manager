@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from TaskManager.models import Supervisor, Developer
+
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User

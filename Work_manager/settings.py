@@ -173,6 +173,5 @@ LOGGING = {
     }
 }
 
-
 #global variables added customarily
 LOGIN_URL='public_connection'

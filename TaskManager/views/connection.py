@@ -1,6 +1,6 @@
 
 # Create your views here.
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django import forms
 from django.contrib.auth import authenticate, login
 
@@ -14,6 +14,8 @@ def page(request):
             user = authenticate(username=username, password=password)
             if user:
                 login(request,user)
+                if request.GET.get('next') is not None:
+                    return redirect(request.GET['next'])
         else:
             return render(request,'en/public/connection.html',{'form':form})
     else:

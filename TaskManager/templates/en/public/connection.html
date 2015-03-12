@@ -8,7 +8,7 @@
         </p>
     {% else %}
         <h1>Conexion</h1>
-        <form method="POST" action="{{ public_connection }}"
+        <form method="POST" action="{{ public_connection }}">
         {% csrf_token %}
         <table>
             {{ form.as_table }}
