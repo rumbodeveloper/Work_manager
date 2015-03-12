@@ -20,7 +20,7 @@ class Form_inscription(forms.Form):
 			raise forms.ValidationError("Passwords are not identical.") 
 		return self.cleaned_data
 # View for create_developer
-#@login_required
+@login_required
 def page(request):
 	if request.POST:
 		form = Form_inscription(request.POST)
