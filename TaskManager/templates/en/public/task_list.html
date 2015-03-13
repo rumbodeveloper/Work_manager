@@ -23,10 +23,15 @@
             </tr>
         {%  endif %}
         {% for task in task_list %}
-            <tr>
-                <td><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a> </td>
+            <tr id="task_{{ task.id }}">
+                <td><a href="{% url "task_detail" task.id %}" >{{ task.title }}</a></td>
+                <td>{{ last_task.description|truncatechars:25 }}</td>
+
+
+
                 <td><a href="{% url 'update_task' task.id %}">Editar</a> </td>
-                <td><a href="{% url 'task_delete' task.id %}">Borrar</a> </td>
+                <td><button onclick="javascript:task_delete({{ task.id }}),'{% url "task_delete_ajax" %}");">Delete</button> </td>
+
 
             </tr>
         {% endfor %}
