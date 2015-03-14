@@ -3,6 +3,12 @@
     Task List
 {% endblock %}
 
+
+{% load static %}
+{% block head %}
+    <script src="{% static 'javascript/tasks.js' %}"></script>
+{% endblock %}
+
 {% block h1 %}
     Task List:
 {% endblock %}
@@ -24,15 +30,10 @@
         {%  endif %}
         {% for task in task_list %}
             <tr id="task_{{ task.id }}">
-                <td><a href="{% url "task_detail" task.id %}" >{{ task.title }}</a></td>
-                <td>{{ last_task.description|truncatechars:25 }}</td>
-
-
-
-                <td><a href="{% url 'update_task' task.id %}">Editar</a> </td>
-                <td><button onclick="javascript:task_delete({{ task.id }}),'{% url "task_delete_ajax" %}");">Delete</button> </td>
-
-
+                <td><a href="{% url "task_detail" task.id %}">{{ task.title }}</a></td>
+                <td>{{ task.description|truncatechars:25 }}</td>
+                <td><a href="{% url "update_task" task.id %}">Edit</a></td>
+                <td><button onclick="javascript:task_delete({{ task.id }}, '{% url "task_delete_ajax" %}');">Delete</button></td>
             </tr>
         {% endfor %}
     </table>

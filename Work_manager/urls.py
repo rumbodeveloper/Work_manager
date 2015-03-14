@@ -66,5 +66,6 @@ urlpatterns = patterns('',
     url(r'^task_detail_(?P<pk>\d+)$','TaskManager.views.task_detail.page',name='task_detail'),
     url(r'^task_list$', 'TaskManager.views.task_list.page', name='task_list'),
     url(r'^connections$','TaskManager.views.connection.page',name="public_connection"),
-    url(r'^logout$','TaskManager.views.logout.page',name='public_logout')
+    url(r'^logout$','TaskManager.views.logout.page',name='public_logout'),
+    url(r'^task_delete_ajax$', 'TaskManager.views.ajax.task_delete_ajax.page', name="task_delete_ajax"),
 )
