@@ -1,0 +1,26 @@
+#CookielawBanner {
+    background: none repeat scroll 0 0 #d9d9d9;
+    border-bottom: 1px solid #bfbfbf;
+    font-size: 0.9em;
+    margin: -20px 0 15px;
+    padding: 6px 0 !important;
+}
+#CookielawBanner p {
+    margin-bottom: 0;
+}
+#CookielawBanner .btn {
+    font-size: 1em;
+    padding: 2px 5px;
+}
+
+#CookielawBanner {
+    background: none repeat scroll 0 0 #fff;
+    padding: 15px 0;
+}
+#CookielawBanner {
+    background: none repeat scroll 0 0 #d9d9d9;
+    border-bottom: 1px solid #bfbfbf;
+    font-size: 0.9em;
+    margin: -20px 0 15px;
+    padding: 6px 0 !important;
+}

@@ -1,0 +1,39 @@
+/*
+Here are general css settings for the site
+*/
+
+
+
+html{background-color: lavender;}
+
+
+body {font-family: sans-serif;
+            background-color: lemonchiffon;
+            border-radius: 15px;
+            width: 85%;
+            min-width: 1000px;
+            margin-top: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+            border: 1px solid white;
+}
+           
+            
+header {
+        background-size: 100% 100%;        
+        color: white;
+        font-size: 1.20em;
+        line-height: 200%; 
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 15px;
+        padding-left: 10%;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        height: 100px;
+        border-radius: 15px;
+        /* border: 1px solid red; Uncomment for debugging*/
+} 
+
+tr.important td{font-weight: bold;}
