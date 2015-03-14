@@ -14,12 +14,18 @@
 </head>
 <body>
 {% cookielaw_banner %}
-<br />
+
+<br>
+<a href={% url 'public_logout' %}>Logout</a>
+<br/>
+<br><br/>
 <h1>
     Task Manager - {% block h1 %}{% endblock %}
 </h1>
 <article>
     {% block article_content %}{% endblock %}
+
+
 </article>
 
 </body>

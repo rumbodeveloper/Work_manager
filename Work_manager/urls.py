@@ -17,6 +17,9 @@ from TaskManager.views.cbv.UpdateView import Task_update_time
 from TaskManager.views.cbv.DeleteView import Task_delete
 from TaskManager.views.cbv.UpdateViewCustom import UpdateViewCustom
 
+#login required
+from django.contrib.auth.decorators import login_required
+
 
 
 urlpatterns = patterns('',
@@ -39,15 +42,19 @@ urlpatterns = patterns('',
     #url(r'^create_project$','TaskManager.views.createproject.page',name='create_project')
 
     #CBV --> vistas creadas automaticamente en CBV
-    url(r'^create-project$', CreateView.as_view(model=Project, template_name='en/public/create_project.html',
-                                               success_url='index'), name = 'create_project'),
-    url(r'^create-task$', CreateView.as_view(model=Task, template_name='en/public/create_task.html',
-                                               success_url='index'), name = 'create_task'),
+    url(r'^create-project$', login_required(CreateView.as_view(model=Project,
+                                               template_name='en/public/create_project.html',
+                                               success_url='index')), name = 'create_project'),
+    url(r'^create-task$', login_required(CreateView.as_view(model=Task,
+                                               template_name='en/public/create_task.html',
+                                               success_url='index')), name = 'create_task'),
     #url(r'^project_list$', ListView.as_view(model=Project, template_name='en/public/project_list.html'),
         #name='project_list'), # entre comillas para explorar un resultado de sobreescribir CBV'''
-    url(r'^project_list$', Project_list.as_view(model=Project, template_name='en/public/project_list.html'),
+    url(r'^project_list$', login_required(Project_list.as_view(model=Project,
+                                                               template_name='en/public/project_list.html')),
         name='project_list'),
-    url(r'^developer_list$', ListView.as_view(model=Developer, template_name='en/public/developer_list.html'),
+    url(r'^developer_list$', login_required(ListView.as_view(model=Developer,
+                                                             template_name='en/public/developer_list.html')),
         name='developer_list'),
     #url(r'task_detail(?P<pk>\d+)$', DetailView.as_view(model=Task, template_name='en/public/task_detail.html'),
         #name='task_detail'), --> esta la url antigua, sustitudia por la del capitulo 9: using sesions.

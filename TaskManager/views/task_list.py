@@ -2,6 +2,10 @@ from django.shortcuts import render
 from TaskManager.models import Task
 from django.core.urlresolvers import reverse
 
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
 def page(request):
     task_list = Task.objects.all()
     last_task = 0

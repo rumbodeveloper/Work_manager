@@ -1,0 +1,6 @@
+comprobar en producción
+pagina de filtro
+subir a produccion
+TODO no se oculta el banner de cookie_law cuando iniciamos la navegacion
+
+crear un flujo de trabajo del proyecto agenda
