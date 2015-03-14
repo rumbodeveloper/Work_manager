@@ -52,7 +52,7 @@ crashlytics-build.properties
 
 db.sqlite3
 __pycache__
-__init__.py
+#__init__.py
 *.pyc
 
 *.css
