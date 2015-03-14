@@ -55,11 +55,13 @@ __pycache__
 #__init__.py
 *.pyc
 
-*.css
+#*.css
 *.jpg
 *.gif
-*.js
+#*.js
 *.png
 *.db
 
 Packt_example_code/
+
+buffer_code.py
