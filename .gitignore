@@ -71,3 +71,4 @@ superuser.txt
 *.tmproj
 *.DS_Store
 aux_files/
+settings_hostmonster.py
