@@ -62,7 +62,9 @@ __pycache__
 *.png
 *.db
 
-Packt_example_code/
+Pack_example_code/
 
 buffer_code.py
 superuser.txt
+*.tmproj
+*.DS_Store
