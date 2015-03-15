@@ -50,6 +50,8 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 
+
+#project specific
 db.sqlite3
 __pycache__
 #__init__.py
@@ -68,3 +70,4 @@ buffer_code.py
 superuser.txt
 *.tmproj
 *.DS_Store
+aux_files/
